@@ -11,7 +11,9 @@ RUN apt-get update && apt-get install -y wget liblzo2-dev postgresql-${PG_MAJOR}
 ADD scripts  /scripts
 RUN chmod +x /scripts/*.sh
 
-VOLUME /var/lib/postgresql/backup:z
+VOLUME /var/lib/postgresql/backup
+RUN chmod a+rwx -R /var/lib/postgresql/backup
+
 ENV WALG_FILE_PREFIX /var/lib/postgresql/backup
 
 # ENV WALG_SSH_PREFIX ssh://10.0.0.5/postgresql/backup
