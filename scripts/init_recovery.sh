@@ -1,6 +1,7 @@
 #!/bin/bash
 
-if [ "t$PERFORM_RECOVERY" = "tTRUE"]; then
+if [ $PERFORM_RECOVERY = "TRUE" ];
+then
     # Restore base backup.
     # Will create a new Database Cluster.
     wal-g backup-fetch "$PGDATA" LATEST
