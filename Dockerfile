@@ -12,7 +12,6 @@ ADD scripts  /scripts
 RUN chmod +x /scripts/*.sh
 
 VOLUME /var/lib/postgresql/backup
-RUN chown postgres:postgres /var/lib/postgresql/backup
 
 ENV WALG_FILE_PREFIX /var/lib/postgresql/backup
 
