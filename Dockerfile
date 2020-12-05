@@ -40,5 +40,5 @@ ENTRYPOINT ["/scripts/init_recovery.sh"]
 
 # Run default Postgres/PostGIS entrypoint and
 # start Postgres.
-CMD ["docker-entrypoint.sh", "postgres", "-c","max_connections=100", "-c", "shared_buffers=512MB", \
-     "-c","archive_mode=on", "-c","archive_timeout=60", "-c","archive_command=\"wal-g wal-push %p\""]
+CMD ["docker-entrypoint.sh", "postgres", "-c","max_connections=100", "-c", "shared_buffers=512MB"]
+# , "-c","archive_mode=on", "-c","archive_timeout=60", "-c","archive_command=\"wal-g wal-push %p\""]

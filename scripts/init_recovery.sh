@@ -1,7 +1,6 @@
 #!/bin/bash
 
-if "t$PERFORM_RECOVERY" = "tTRUE"
-  then
+if [ "t$PERFORM_RECOVERY" = "tTRUE"]; then
     # Restore base backup.
     # Will create a new Database Cluster.
     wal-g backup-fetch "$PGDATA" LATEST
@@ -12,7 +11,7 @@ if "t$PERFORM_RECOVERY" = "tTRUE"
     chown -R postgres:postgres $PGDATA
     chmod 700 $PGDATA
 
-  fi
+fi
 
 # Execute command given in Dockerfile ("docker-entrypoint.sh", "postgres").
 exec "$@"
