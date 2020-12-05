@@ -2,7 +2,7 @@ FROM postgis/postgis:13-3.0
 
 ENV WAL_G_VERSION v0.2.15
 
-RUN apt-get update && apt-get install -y wget postgresql-${PG_MAJOR}-periods \
+RUN apt-get update && apt-get install -y wget liblzo2-dev postgresql-${PG_MAJOR}-periods \
     && wget https://github.com/wal-g/wal-g/releases/download/$WAL_G_VERSION/wal-g.linux-amd64.tar.gz \
     && tar -zxvf wal-g.linux-amd64.tar.gz && mv wal-g /usr/local/bin/ && chmod a+x /usr/local/bin/wal-g \
     && apt-get purge -y wget && apt-get autoremove -y \
@@ -11,7 +11,7 @@ RUN apt-get update && apt-get install -y wget postgresql-${PG_MAJOR}-periods \
 ADD scripts  /scripts
 RUN chmod +x /scripts/*.sh
 
-VOLUME /var/lib/postgresql/backup
+VOLUME /var/lib/postgresql/backup:z
 ENV WALG_FILE_PREFIX /var/lib/postgresql/backup
 
 # ENV WALG_SSH_PREFIX ssh://10.0.0.5/postgresql/backup
