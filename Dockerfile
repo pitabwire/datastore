@@ -4,7 +4,7 @@ ENV WAL_G_VERSION v0.2.15
 
 RUN apt-get update && apt-get install -y wget postgresql-${PG_MAJOR}-periods \
     && wget https://github.com/wal-g/wal-g/releases/download/$WAL_G_VERSION/wal-g.linux-amd64.tar.gz \
-    && tar -zxvf wal-g.linux-amd64.tar.gz && mv wal-g /usr/local/bin/ \
+    && tar -zxvf wal-g.linux-amd64.tar.gz && mv wal-g /usr/local/bin/ && chmod a+x /usr/local/bin/wal-g \
     && apt-get purge -y wget && apt-get autoremove -y \
     && rm -rf /var/lib/apt/lists/*
 
