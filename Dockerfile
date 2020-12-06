@@ -13,10 +13,16 @@ RUN export DEBIAN_FRONTEND=noninteractive \
 ADD scripts  /scripts
 RUN chmod +x /scripts/*.sh
 
-ENV WALG_FILE_PREFIX /var/lib/postgresql/backup
+ENV PGHOST=/var/run/postgresql
+ENV PGUSER=$POSTGRES_USER
+ENV PGPASSWORD=$POSTGRES_PASSWORD
 
-RUN mkdir -p "$WALG_FILE_PREFIX" && chown -R postgres:postgres "$WALG_FILE_PREFIX" && chmod 777 "$WALG_FILE_PREFIX"
-VOLUME $WALG_FILE_PREFIX
+ENV BACKUP_DIR /var/lib/postgresql/backup
+
+RUN mkdir -p "$BACKUP_DIR" && chown -R postgres:postgres "$BACKUP_DIR" && chmod 777 "$BACKUP_DIR"
+VOLUME $BACKUP_DIR
+
+
 
 # ENV WALG_SSH_PREFIX ssh://10.0.0.5/postgresql/backup
 # ENV SSH_PORT 22
