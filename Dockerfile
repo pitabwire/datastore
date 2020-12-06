@@ -17,12 +17,6 @@ ENV PGHOST=/var/run/postgresql
 ENV PGUSER=$POSTGRES_USER
 ENV PGPASSWORD=$POSTGRES_PASSWORD
 
-ENV BACKUP_DIR /var/lib/postgresql/backup
-
-RUN mkdir -p "$BACKUP_DIR" && chown -R postgres:postgres "$BACKUP_DIR" && chmod 777 "$BACKUP_DIR"
-VOLUME $BACKUP_DIR
-
-
 
 # ENV WALG_SSH_PREFIX ssh://10.0.0.5/postgresql/backup
 # ENV SSH_PORT 22
@@ -45,8 +39,3 @@ ENV PERFORM_RECOVERY "FALSE"
 # set user permissions and
 # copy recovery.conf into data cluster.
 ENTRYPOINT ["/scripts/init_recovery.sh"]
-
-# Run default Postgres/PostGIS entrypoint and
-# start Postgres.
-CMD ["docker-entrypoint.sh", "postgres", "-c","max_connections=100", "-c", "shared_buffers=512MB" \
-     , "-c","archive_mode=on", "-c","archive_timeout=60", "-c","archive_command=\"wal-g wal-push %p\""]
