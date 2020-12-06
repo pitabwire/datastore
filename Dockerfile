@@ -1,6 +1,6 @@
 FROM postgis/postgis:13-3.0
 
-ENV WAL_G_VERSION v0.2.15
+ENV WAL_G_VERSION v0.2.19
 
 RUN export DEBIAN_FRONTEND=noninteractive \
     && apt-get update -qq && apt-get install -qqy wget liblzo2-dev postgresql-${PG_MAJOR}-periods \
