@@ -46,3 +46,16 @@ jobs:
         git tag -a v${{ env.VERSION_NAME }} -m "${{ github.event.inputs.description }}"
     - name: Push release tags
       run: git push origin v${{ env.VERSION_NAME }}
+
+    - name: Publish Image
+      uses: matootie/github-docker@v3.1.0
+      id: publish
+      with:
+        accessToken: ${{ secrets.GITHUB_TOKEN }}
+        tag: |
+          v${{ env.VERSION_NAME }}
+          latest
+          ${{ github.sha }}
+
+    - name: Print Full Image URL
+      run: echo ${{ steps.publish.outputs.imageURL }}:${{ github.sha }}
