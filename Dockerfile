@@ -1,4 +1,4 @@
-FROM postgis/postgis:13-master
+FROM postgis/postgis:13-3.1
 
 LABEL org.opencontainers.image.source=https://github.com/pitabwire/datastore
 
@@ -18,12 +18,6 @@ RUN chmod +x /scripts/*.sh
 ENV PGHOST=/var/run/postgresql
 ENV PGUSER=$POSTGRES_USER
 ENV PGPASSWORD=$POSTGRES_PASSWORD
-
-
-# ENV WALG_SSH_PREFIX ssh://10.0.0.5/postgresql/backup
-# ENV SSH_PORT 22
-# ENV SSH_USERNAME postgresql
-# ENV SSH_PASSWORD backups
 
 # WALG_GS_PREFIX: 'gs://backup-bucket/walg-folder'
 # GOOGLE_APPLICATION_CREDENTIALS: '/serviceAccountKey.json'
