@@ -13,7 +13,7 @@ fi
 if [ ! -s "$PGDATA/PG_VERSION" ]; then
   echo "The postgresql data directory $PGDATA does not exist."
 
-  if [ -n "${REPLICATION_PASSWORD}"  ] && [ -n "${REPLICATION_HOST}"  ] && [ -n "${REPLICATION_SLOT}"  ]  ; then
+  if [ -n "${RUN_AS_REPLICA}"  ]; then
 
     echo " Container identifies a secondary instance hence starting from base backup"
     export PGPASSWORD=${REPLICATION_PASSWORD}
