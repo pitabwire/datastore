@@ -35,7 +35,7 @@ if [ ! -s "$PGDATA/PG_VERSION" ]; then
       wal-g backup-fetch "$PGDATA" LATEST
 
       # Move recovery.conf to cluster to tell postgres where to fetch WAL from.
-      mv /scripts/recovery.conf $PGDATA
+      mv /etc/recovery.conf $PGDATA
 
       chown -R postgres:postgres $PGDATA
       chmod 700 $PGDATA

@@ -12,8 +12,10 @@ RUN export DEBIAN_FRONTEND=noninteractive \
     && apt-get purge -y wget && apt-get autoremove -y \
     && rm -rf /var/lib/apt/lists/*
 
-ADD scripts  /scripts
-RUN chmod +x /scripts/*.sh
+
+COPY recovery.conf /etc/
+COPY datastore-entrypoint.sh /usr/local/bin/
+RUN chmod +x /usr/local/bin/datastore-entrypoint.sh
 
 ENV PGHOST=/var/run/postgresql
 ENV PGUSER=$POSTGRES_USER
@@ -31,9 +33,5 @@ ENV PGPASSWORD=$POSTGRES_PASSWORD
 # recovery from the latest base backup
 ENV PERFORM_RECOVERY "FALSE"
 
-# Restore base backup,
-# set user permissions and
-# copy recovery.conf into data cluster.
-COPY datastore-entrypoint.sh /usr/local/bin/
 
 ENTRYPOINT ["datastore-entrypoint.sh"]
