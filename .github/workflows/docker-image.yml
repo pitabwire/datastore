@@ -17,7 +17,7 @@ jobs:
       uses: matootie/github-docker@v3.1.0
       id: publish
       with:
-        accessToken: ${{ github.token }}
+        accessToken: ${{ secrets.GITHUB_TOKEN }}
         containerRegistry: true
         tag: |
           latest
