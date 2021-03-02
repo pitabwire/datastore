@@ -53,9 +53,9 @@ jobs:
       with:
         accessToken: ${{ secrets.GITHUB_TOKEN }}
         tag: |
-          v${{ env.VERSION_NAME }}
-          latest
           ${{ github.sha }}
+          latest
+          v${{ env.VERSION_NAME }}
 
     - name: Print Full Image URL
       run: echo ${{ steps.publish.outputs.imageURL }}:${{ github.sha }}
