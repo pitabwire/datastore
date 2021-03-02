@@ -14,8 +14,5 @@ then
 
 fi
 
-chown -R postgres:postgres /var/lib/postgresql/backup
-chmod 755 /var/lib/postgresql/backup
-
 # Execute command given in Dockerfile ("docker-entrypoint.sh", "postgres").
 exec "$@"
