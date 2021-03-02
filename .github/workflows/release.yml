@@ -1,4 +1,4 @@
-name: Docker Image CI
+name: Manually create a release
 
 on:
 
