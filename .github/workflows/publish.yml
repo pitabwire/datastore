@@ -2,8 +2,9 @@ name: Auto Build docker image
 
 on:
   push:
+
     tags:
-      - "*"
+      - *
 
 jobs:
 
