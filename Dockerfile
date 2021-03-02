@@ -1,4 +1,4 @@
-FROM postgis/postgis:13-3.0
+FROM postgis/postgis:13-master
 
 ENV WAL_G_VERSION v0.2.19
 
