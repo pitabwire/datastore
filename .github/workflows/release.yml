@@ -35,11 +35,14 @@ jobs:
         git add versions.txt
         git commit --message "bump release version ${{ github.event.inputs.description }}"
         echo "::set-output name=commit::$(git rev-parse HEAD)"
-    - name: Push new branch
-      run: git push origin release/v${{ github.event.inputs.versionName }}
+    - name: Push changes
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        branch: ${{ github.ref }}
     - name: Tag our release to freeze time
       id: make-release-tag
       run: |
-        git tag -a v${{ env.VERSION_NAME }} -m "${{ env.VERSION_TITLE }}"
+        git tag -a v${{ env.VERSION_NAME }} -m "${{ github.event.inputs.description }}"
     - name: Push release tags
       run: git push origin v${{ env.VERSION_NAME }}
