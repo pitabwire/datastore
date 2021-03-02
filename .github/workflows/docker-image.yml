@@ -2,9 +2,7 @@ name: Docker Image CI
 
 on:
   push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+    branches: [ master, main ]
 
 jobs:
 
@@ -14,5 +12,16 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Build the datastore Docker image
-      run: docker build . --file Dockerfile  --tag docker.pkg.github.com/pitabwire/datastore/postgresql:latest --tag docker.pkg.github.com/pitabwire/datastore/postgresql:${GITHUB_SHA::8}
+
+    - name: Publish Image
+      uses: matootie/github-docker@v3.1.0
+      id: publish
+      with:
+        accessToken: ${{ github.token }}
+        containerRegistry: true
+        tag: |
+          latest
+          ${{ github.sha }}
+
+    - name: Print Full Image URL
+      run: echo ${{ steps.publish.outputs.imageURL }}:${{ github.sha }}
