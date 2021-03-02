@@ -3,7 +3,7 @@ name: Auto Build docker image
 on:
   push:
     tags:
-      - '*'
+      - v*
 
 jobs:
   build:
