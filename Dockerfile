@@ -34,4 +34,6 @@ ENV PERFORM_RECOVERY "FALSE"
 # Restore base backup,
 # set user permissions and
 # copy recovery.conf into data cluster.
-ENTRYPOINT ["/scripts/init_recovery.sh"]
+COPY datastore-entrypoint.sh /usr/local/bin/
+
+ENTRYPOINT ["datastore-entrypoint.sh"]
