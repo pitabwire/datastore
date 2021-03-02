@@ -1,5 +1,7 @@
 FROM postgis/postgis:13-master
 
+LABEL org.opencontainers.image.source=https://github.com/pitabwire/datastore
+
 ENV WAL_G_VERSION v0.2.19
 
 RUN export DEBIAN_FRONTEND=noninteractive \

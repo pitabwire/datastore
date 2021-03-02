@@ -18,7 +18,6 @@ jobs:
       id: publish
       with:
         accessToken: ${{ secrets.GITHUB_TOKEN }}
-        containerRegistry: true
         tag: |
           latest
           ${{ github.sha }}
