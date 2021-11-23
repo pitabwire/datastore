@@ -1,8 +1,8 @@
-FROM postgis/postgis:13-3.1
+FROM postgis/postgis:14-3.1
 
 LABEL org.opencontainers.image.source=https://github.com/pitabwire/datastore
 
-ENV WAL_G_VERSION v0.2.19
+ENV WAL_G_VERSION v1.1
 
 RUN export DEBIAN_FRONTEND=noninteractive \
     && apt-get update -qq && apt-get install -qqy wget liblzo2-dev postgresql-${PG_MAJOR}-periods \
