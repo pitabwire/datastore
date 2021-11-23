@@ -1,1 +1,1 @@
-image_version = 13.0.13
+image_version = 13.0.14
