@@ -53,7 +53,7 @@ if [ ! -s "$PGDATA/PG_VERSION" ]; then
 
   fi
 
-  echo -e "local all all  trust\nhost all all all $POSTGRES_HOST_AUTH_METHOD\nhostssl all all all $POSTGRES_HOST_AUTH_METHOD" > "$PGDATA/pg_hba.conf"
+  echo -e "local all all  trust\nhost all all all $POSTGRES_HOST_AUTH_METHOD\nhostssl all all all $POSTGRES_HOST_AUTH_METHOD\n" > "$PGDATA/pg_hba.conf"
 fi
 
 exec "$@"
