@@ -7,7 +7,7 @@ ENV WAL_G_VERSION v1.1
 RUN export DEBIAN_FRONTEND=noninteractive \
     && apt-get update -qq && apt-get install -qqy wget liblzo2-dev postgresql-${PG_MAJOR}-periods \
     && wget https://github.com/wal-g/wal-g/releases/download/$WAL_G_VERSION/wal-g-pg-ubuntu-20.04-amd64.tar.gz \
-    && tar -zxvf wal-g-pg-ubuntu-20.04-amd64.tar.gz && mv wal-g /usr/local/bin/ && chmod a+x /usr/local/bin/wal-g \
+    && tar -zxvf wal-g-pg-ubuntu-20.04-amd64.tar.gz && mv wal-g-pg-ubuntu-20.04-amd64 /usr/local/bin/wal-g && chmod a+x /usr/local/bin/wal-g \
     && rm wal-g-pg-ubuntu-20.04-amd64.tar.gz \
     && apt-get purge -y wget && apt-get autoremove -y \
     && rm -rf /var/lib/apt/lists/*
