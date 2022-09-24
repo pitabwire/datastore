@@ -1,4 +1,4 @@
-FROM postgis/postgis:14-3.1
+FROM postgis/postgis:14-3.3
 
 LABEL org.opencontainers.image.source=https://github.com/pitabwire/datastore
 
