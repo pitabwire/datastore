@@ -42,6 +42,7 @@ if [ ! -s "$PGDATA/PG_VERSION" ]; then
     else
 
       docker_init_database_dir
+      pg_setup_hba_conf "$@"
       export PGPASSWORD=${POSTGRES_PASSWORD}
       docker_temp_server_start "$@"
       docker_setup_db
