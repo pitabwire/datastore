@@ -1,0 +1,22 @@
+name: Changelog CI
+
+# Controls when the action will run. Triggers the workflow on a pull request
+on:
+  pull_request:
+    types: [opened, reopened]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checks-out your repository
+      - uses: actions/checkout@v3
+
+      - name: Update Changelog
+        uses: saadmk11/changelog-ci@v1.0.0
+        with:
+          changelog_filename: CHANGELOG.md
+          config_file: changelog-ci-config.json
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}

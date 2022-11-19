@@ -53,8 +53,6 @@ if [ ! -s "$PGDATA/PG_VERSION" ]; then
 
   fi
 
-  echo; echo "host all all all $POSTGRES_HOST_AUTH_METHOD" >> "$PGDATA/pg_hba.conf";
-  echo; echo "hostssl all all all $POSTGRES_HOST_AUTH_METHOD" >> "$PGDATA/pg_hba.conf";
   echo;
 fi
 
