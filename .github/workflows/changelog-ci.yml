@@ -15,8 +15,5 @@ jobs:
 
       - name: Update Changelog
         uses: saadmk11/changelog-ci@v1.1.0
-        with:
-          changelog_filename: CHANGELOG.md
-          config_file: changelog-ci-config.json
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
